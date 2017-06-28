@@ -32,6 +32,7 @@ if __name__ == '__main__':
     T = tensor.compression(change_tensor, 1)
     for i in range(50):
         for j in range(50):
+            T[i, ::, j] = T[i, ::, j] / np.sum(T[i, ::, j])
     for i in range(1, 50):
         print LA.norm((T[i] - T[i - 1]), 'fro') / LA.norm(T[i - 1], 'fro')
 
